@@ -1,0 +1,7 @@
+include:
+  - ./downloads/compose.yaml
+  - ./games/compose.yaml
+  - ./homepage/compose.yaml
+  - ./media/compose.yaml
+  - ./monitoring/compose.yaml
+  - ./utilities/compose.yaml
