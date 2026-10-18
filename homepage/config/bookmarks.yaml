@@ -1,0 +1,60 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Developer:
+    - Gmail:
+        - abbr: GM
+          icon: gmail.png
+          href: https://mail.google.com/
+
+    - Github:
+        - abbr: GH
+          icon: github.png
+          href: https://github.com/
+
+    - LinkedIn:
+        - abbr: LN
+          icon: linkedin.png
+          href: https://linkedin.com/
+
+
+- Social:
+    - Letterboxd:
+        - abbr: LB
+          href: https://letterboxd.com/
+          icon: sh-letterboxd
+
+    - Twitter:
+        - abbr: TW
+          href: https://x.com/
+          icon: twitter.png
+
+    - Facebook:
+        - abbr: FB
+          href: https://facebook.com/
+          icon: facebook.png
+
+    - Instagram:
+        - abbr: IG
+          href: https://instagram.com/
+          icon: instagram.png
+
+    - Reddit:
+        - abbr: RE
+          href: https://reddit.com/
+          icon: reddit.png
+
+
+
+- Entertainment:
+    - YouTube:
+        - abbr: YT
+          icon: youtube.png
+          href: https://youtube.com/
+    - Radio Garden: 
+        - abbr: RG
+          href: https://radio.garden/
+          icon: mdi-radio
+
+

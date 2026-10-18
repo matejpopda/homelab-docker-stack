@@ -1,0 +1,28 @@
+# Secrets
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+*.secret
+
+# Persistent application data
+**/data/
+**/database/
+**/mysql/
+**/influxdb/
+**/beszel_data/
+**/beszel_agent_data/
+**/beszel_socket/
+
+# Databases, backups and logs
+*.db
+*.sqlite
+*.sqlite3
+*.log
+backups/
+
+# Temporary files
+.DS_Store
+*~

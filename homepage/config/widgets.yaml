@@ -1,0 +1,40 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/info-widgets/
+
+- resources:
+    cpu: true
+    cputemp: true
+    uptime: true
+
+- resources: 
+    memory: true
+
+- resources:
+    label: System
+    disk: /
+
+- resources: 
+    label: Bulk
+    disk: /srv
+
+- search:
+    provider: [duckduckgo, google]
+    target: _blank
+    focus: true
+    showSearchSuggestions: true
+
+
+- openmeteo: 
+    label: Prague
+    latitude: 50.0875
+    longitude: 14.421389
+    units: metric
+    cache: 10
+
+
+- datetime:
+    text_size: xl
+    format: 
+      timeStyle: short
+      dateStyle: short

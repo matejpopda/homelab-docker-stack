@@ -1,0 +1,19 @@
+
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: "localhost:3000,127.0.0.1:3000,192.168.10.5:3000"
+      PUID: "1000"
+      PGID: "100"
+      TZ: Europe/Prague
+    ports:
+      - "3000:3000"
+    volumes:
+      - /opt/stacks/homepage/config:/app/config
+      - /srv:/srv:ro
+

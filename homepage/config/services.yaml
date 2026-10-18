@@ -1,0 +1,157 @@
+
+
+- Games:
+    - Minecraft:
+        icon: minecraft
+        description: Minecraft Server 
+        widget:
+            type: minecraft
+            url: udp://192.168.10.5:25565
+            fields: ["players", "version", "status"]
+
+- Media:
+    - Jellyfin:
+        href: http://192.168.10.5:8096
+        description: Movies and TV streaming
+        icon: jellyfin.png
+        widget:
+            type: jellyfin        
+            url: http://192.168.10.5:8096
+            key: "{{HOMEPAGE_VAR_JELLYFIN_KEY}}"
+            version: 2
+            enableBlocks: true
+            enableNowPlaying: true
+            enableUser: true
+            enableMediaControl: false
+            showEpisodeNumber: True
+            fields: 
+              - movies
+              - series
+              - episodes
+
+    - Seerr:
+        href: http://192.168.10.5:5055
+        description: Content requester
+        icon: seerr.png
+        widget: 
+          type: seerr
+          url:  http://192.168.10.5:5055
+          key: "{{HOMEPAGE_VAR_SEERR_KEY}}"
+
+
+
+
+
+
+- Productivity:
+    - Vikunja:
+        href: http://192.168.10.5:3456
+        icon: vikunja.png
+        widget:
+          type: vikunja
+          url: http://192.168.10.5:3456
+          key: "{{HOMEPAGE_VAR_VIKUNJA_KEY}}"
+          enableTaskList: true
+          version: 2
+
+
+
+- Monitoring:
+    - Uptime Kuma:
+        href: http://192.168.10.5:3001
+        icon: uptime-kuma.png
+        widget:
+          type: uptimekuma
+          url: http://192.168.10.5:3001
+          slug: "{{HOMEPAGE_VAR_KUMA_SLUG}}"
+
+    - Beszel:
+        href: http://192.168.10.5:8090
+        icon: beszel.png
+        widget:
+          type: beszel
+          url: http://192.168.10.5:8090
+          username: "{{HOMEPAGE_VAR_BESZEL_USERNAME}}"
+          password: "{{HOMEPAGE_VAR_BESZEL_PASSWORD}}"
+          version: 2
+          fields: ["name", "status", "network"]
+          systemId: "Homelab"
+
+
+    - Scrutiny:
+        href: http://192.168.10.5:8091
+        icon: scrutiny.png
+        widget:
+          type: scrutiny
+          url: http://192.168.10.5:8091
+
+    - What's Up Docker:
+        href: http://192.168.10.5:3002
+        icon: docker.png
+        widget:
+          type: whatsupdocker
+          url: http://192.168.10.5:3002
+          key: "{{HOMEPAGE_VAR_WUD_KEY}}"
+          
+
+    - Speedtest Tracker:
+        href: http://192.168.10.5:3003
+        icon: speedtest-tracker.png
+        widget:
+          type: speedtest
+          url: http://192.168.10.5:3003
+          key: "{{HOMEPAGE_VAR_SPEEDTEST_KEY}}"
+
+    - Healthchecks:
+        href: http://192.168.10.5:8000
+        icon: healthchecks.png
+        widget:
+          type: healthchecks
+          url: http://192.168.10.5:8000
+          key: "{{HOMEPAGE_VAR_HEALTHCHECKS_KEY}}"
+
+
+- Downloads:
+    - Sonarr:
+        href: http://192.168.10.5:8989
+        description: TV series management
+        icon: sonarr.png
+        widget:
+            type: sonarr
+            url: http://192.168.10.5:8989
+            key: "{{HOMEPAGE_VAR_SONARR_KEY}}"
+            enableQueue: true
+            fields: ["wanted", "queued", "series"]
+
+    - Radarr:
+        href: http://192.168.10.5:7878
+        description: Movie management
+        icon: radarr.png
+        widget:
+            type: radarr
+            url: http://192.168.10.5:7878
+            key: "{{HOMEPAGE_VAR_RADARR_KEY}}"
+            enableQueue: true
+            fields: ["wanted", "missing", "queued", "movies"]
+
+
+    - Prowlarr:
+        href: http://192.168.10.5:9696
+        description: Indexer management
+        icon: prowlarr.png
+        widget:
+            type: prowlarr
+            url: http://192.168.10.5:9696
+            key: "{{HOMEPAGE_VAR_PROWLARR_KEY}}"
+            fields: ["numberOfGrabs", "numberOfQueries", "numberOfFailGrabs", "numberOfFailQueries"]
+
+
+    - qBittorrent:
+        href: http://192.168.10.5:8080
+        description: Download client
+        icon: qbittorrent.png
+        widget: 
+            type: qbittorrent
+            url: http://192.168.10.5:8080
+            key: "{{HOMEPAGE_VAR_QBITTORRENT_KEY}}"
+            fields: ["leech", "download", "seed", "upload"]
