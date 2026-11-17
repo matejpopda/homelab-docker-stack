@@ -7,6 +7,8 @@ services:
       - "192.168.10.5:3001:3001"
     volumes:
       - /opt/appdata/uptime-kuma:/app/data
+    networks:
+      - homepage
 
   beszel:
     image: henrygd/beszel:latest
@@ -24,6 +26,8 @@ services:
     #   interval: 120s
     #   start_period: 10s
     #   timeout: 5s
+    networks:
+      - homepage
 
   beszel-agent:
     image: henrygd/beszel-agent:latest
@@ -59,6 +63,8 @@ services:
       - /run/udev:/run/udev:ro
       - /opt/appdata/scrutiny/config:/opt/scrutiny/config
       - /opt/appdata/scrutiny/influxdb:/opt/scrutiny/influxdb
+    networks:
+      - homepage
 
 
 
@@ -71,11 +77,13 @@ services:
       - "192.168.10.5:3002:3000"
     environment:
       WUD_AUTH_ADMIN_USER: root
-      WUD_AUTH_ADMIN_PASSWORD: "${WUD_ADMIN_PASSWORD}"  
-      WUD_TRIGGER_DOCKER_LOCAL_AUTO: true
+      WUD_AUTH_ADMIN_PASSWORD: "${WUD_ADMIN_PASSWORD}"
+      WUD_TRIGGER_DOCKER_LOCAL_AUTO: false
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /opt/appdata/whatsupdocker:/store
+    networks:
+      - homepage
 
 
 
@@ -88,12 +96,14 @@ services:
     environment:
       PUID: "${PUID}"
       PGID: "${PGID}"
-      APP_KEY: "%{SPEEDTEST_APP_KEY}"
+      APP_KEY: "${SPEEDTEST_APP_KEY}"
       DB_CONNECTION: sqlite
       SPEEDTEST_SCHEDULE: "0 * * * *"
       DISPLAY_TIMEZONE: "${TZ}"
     volumes:
       - /opt/appdata/speedtest-tracker:/config
+    networks:
+      - homepage
 
 
 
@@ -104,6 +114,7 @@ services:
     ports:
       - "192.168.10.5:8000:8000"
     environment:
+      ALLOWED_HOSTS: "192.168.10.5,healthchecks,localhost,127.0.0.1"
       DB: sqlite
       DB_NAME: /data/hc.sqlite
       DEBUG: "False"
@@ -112,3 +123,12 @@ services:
       DEFAULT_FROM_EMAIL: "healthchecks@home.local"
     volumes:
       - /opt/appdata/healthchecks:/data
+    networks:
+      - homepage
+
+networks:
+  media:
+    name: media
+  homepage:
+    name: homepage
+

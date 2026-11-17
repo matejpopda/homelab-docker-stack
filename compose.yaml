@@ -1,7 +1,21 @@
 include:
+  - ./media/compose.yaml
+  - ./homepage/compose.yaml
   - ./downloads/compose.yaml
   - ./games/compose.yaml
-  - ./homepage/compose.yaml
-  - ./media/compose.yaml
   - ./monitoring/compose.yaml
   - ./utilities/compose.yaml
+  - ./discord-bot/compose.yaml
+  - ./network/compose.yaml
+
+
+
+
+
+networks:
+  default:
+    name: homelab
+  homepage:
+    name: homepage
+  media: 
+     name: media

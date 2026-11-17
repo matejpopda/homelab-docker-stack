@@ -19,8 +19,12 @@ services:
       - "6881:6881/udp"
     networks:
       - media
+      - homepage
+
+
 
 networks:
   media:
-    external: true
     name: media
+  homepage:
+    name: homepage

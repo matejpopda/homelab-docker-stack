@@ -16,7 +16,7 @@
         icon: jellyfin.png
         widget:
             type: jellyfin        
-            url: http://192.168.10.5:8096
+            url: http://jellyfin:8096
             key: "{{HOMEPAGE_VAR_JELLYFIN_KEY}}"
             version: 2
             enableBlocks: true
@@ -35,7 +35,7 @@
         icon: seerr.png
         widget: 
           type: seerr
-          url:  http://192.168.10.5:5055
+          url:  http://seerr:5055
           key: "{{HOMEPAGE_VAR_SEERR_KEY}}"
 
 
@@ -49,7 +49,7 @@
         icon: vikunja.png
         widget:
           type: vikunja
-          url: http://192.168.10.5:3456
+          url: http://vikunja:3456
           key: "{{HOMEPAGE_VAR_VIKUNJA_KEY}}"
           enableTaskList: true
           version: 2
@@ -62,7 +62,7 @@
         icon: uptime-kuma.png
         widget:
           type: uptimekuma
-          url: http://192.168.10.5:3001
+          url: http://uptime-kuma:3001
           slug: "{{HOMEPAGE_VAR_KUMA_SLUG}}"
 
     - Beszel:
@@ -70,7 +70,7 @@
         icon: beszel.png
         widget:
           type: beszel
-          url: http://192.168.10.5:8090
+          url: http://beszel:8090
           username: "{{HOMEPAGE_VAR_BESZEL_USERNAME}}"
           password: "{{HOMEPAGE_VAR_BESZEL_PASSWORD}}"
           version: 2
@@ -83,23 +83,22 @@
         icon: scrutiny.png
         widget:
           type: scrutiny
-          url: http://192.168.10.5:8091
+          url: http://scrutiny:8080
 
     - What's Up Docker:
         href: http://192.168.10.5:3002
         icon: docker.png
         widget:
           type: whatsupdocker
-          url: http://192.168.10.5:3002
+          url: http://whatsupdocker:3000
           key: "{{HOMEPAGE_VAR_WUD_KEY}}"
-          
 
     - Speedtest Tracker:
         href: http://192.168.10.5:3003
         icon: speedtest-tracker.png
         widget:
           type: speedtest
-          url: http://192.168.10.5:3003
+          url: http://speedtest-tracker:80
           key: "{{HOMEPAGE_VAR_SPEEDTEST_KEY}}"
 
     - Healthchecks:
@@ -107,7 +106,7 @@
         icon: healthchecks.png
         widget:
           type: healthchecks
-          url: http://192.168.10.5:8000
+          url: http://healthchecks:8000
           key: "{{HOMEPAGE_VAR_HEALTHCHECKS_KEY}}"
 
 
@@ -118,7 +117,7 @@
         icon: sonarr.png
         widget:
             type: sonarr
-            url: http://192.168.10.5:8989
+            url: http://sonarr:8989
             key: "{{HOMEPAGE_VAR_SONARR_KEY}}"
             enableQueue: true
             fields: ["wanted", "queued", "series"]
@@ -129,7 +128,7 @@
         icon: radarr.png
         widget:
             type: radarr
-            url: http://192.168.10.5:7878
+            url: http://radarr:7878
             key: "{{HOMEPAGE_VAR_RADARR_KEY}}"
             enableQueue: true
             fields: ["wanted", "missing", "queued", "movies"]
@@ -141,17 +140,37 @@
         icon: prowlarr.png
         widget:
             type: prowlarr
-            url: http://192.168.10.5:9696
+            url: http://prowlarr:9696
             key: "{{HOMEPAGE_VAR_PROWLARR_KEY}}"
             fields: ["numberOfGrabs", "numberOfQueries", "numberOfFailGrabs", "numberOfFailQueries"]
 
+    - Bazarr:
+        href: http://192.168.10.5:6767/
+        description: Subtitle Manager
+        icon: bazarr.png
+        widget:
+          type: bazarr
+          url: http://bazarr:6767/
+          key: "{{HOMEPAGE_VAR_BAZARR_KEY}}"
+          fields: ["missingEpisodes", "missingMovies"]
+
+
+    - Tdarr:
+        href: http://192.168.10.5:8265/
+        description: Automatic Transcoding
+        icon: tdarr.png
+        widget:
+          type: tdarr
+          url:  http://tdarr:8265/
+          key: "{{HOMEPAGE_VAR_TDARR_KEY}}"
+          fields: ["queue", "processed", "errored", "saved"]
 
     - qBittorrent:
         href: http://192.168.10.5:8080
         description: Download client
         icon: qbittorrent.png
-        widget: 
+        widget:
             type: qbittorrent
-            url: http://192.168.10.5:8080
+            url: http://qbittorrent:8080
             key: "{{HOMEPAGE_VAR_QBITTORRENT_KEY}}"
             fields: ["leech", "download", "seed", "upload"]

@@ -17,3 +17,11 @@ services:
       - /opt/stacks/homepage/config:/app/config
       - /srv:/srv:ro
 
+    networks: 
+      - homepage
+
+networks:
+  media:
+    name: media
+  homepage:
+    name: homepage

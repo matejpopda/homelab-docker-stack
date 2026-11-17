@@ -15,7 +15,7 @@ services:
       EULA: "TRUE"
       TYPE: "FTBA"
       FTB_MODPACK_ID: "135"
-      FTB_MODPACK_VERSION_ID: "100565"
+      FTB_MODPACK_VERSION_ID: "100605"
       MEMORY: "8G"
       TZ: "Europe/Prague"
       SERVER_NAME: "Feed The Beast Evo 2"

@@ -14,3 +14,11 @@ services:
     volumes:
       - /opt/appdata/vikunja/db:/db
       - /opt/appdata/vikunja/files:/app/vikunja/files
+
+    networks: 
+      - homepage
+
+
+networks:
+  homepage:
+    name: homepage

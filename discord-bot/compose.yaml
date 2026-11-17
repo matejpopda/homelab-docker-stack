@@ -1,0 +1,16 @@
+services:
+  discord-bot:
+    image: matejpopda/my-discord-bot:latest
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: discord-bot
+    restart: unless-stopped
+
+    volumes:
+      - /opt/appdata/discord-bot/config_files:/app/config_files
+      - /opt/appdata/discord-bot/data:/app/data
+      - /opt/appdata/discord-bot/logs:/app/logs
+      - /opt/appdata/discord-bot/model_cache:/root/.cache/huggingface
+
+

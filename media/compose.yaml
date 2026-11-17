@@ -16,6 +16,7 @@ services:
       - "8989:8989"
     networks:
       - media
+      - homepage
 
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
@@ -32,6 +33,7 @@ services:
       - "9696:9696"
     networks:
       - media
+      - homepage
 
 
   radarr:
@@ -50,6 +52,7 @@ services:
       - "7878:7878"
     networks:
       - media
+      - homepage
 
 
   flaresolverr:
@@ -63,6 +66,7 @@ services:
     restart: unless-stopped
     networks:
       - media
+      - homepage
 
   jellyfin:
     image: jellyfin/jellyfin:latest
@@ -78,6 +82,7 @@ services:
       - /srv/media:/media:ro
     networks:
       - media
+      - homepage
 
 
   seerr:
@@ -93,8 +98,68 @@ services:
       - /opt/appdata/seerr:/app/config
     networks:
       - media
+      - homepage
 
+
+  tdarr:
+    container_name: tdarr
+    image: ghcr.io/haveagitgat/tdarr:3.02.00
+    restart: unless-stopped
+    ports:
+      - 8265:8265 # webUI port
+      - 8266:8266 # server port
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=${UMASK}
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - webUIPort=8265
+      - internalNode=true
+      - inContainer=true
+      - ffmpegVersion=7
+      - nodeName=TDarrServerNode
+      - auth=true
+      - apiKey= # API key for the internal Node
+      - openBrowser=true
+      - enableDockerAutoUpdater=false
+      - maxLogSizeMB=10
+      - cronPluginUpdate=
+      #- NVIDIA_DRIVER_CAPABILITIES=all
+      #- NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /opt/appdata/tdarr/server:/app/server
+      - /opt/appdata/tdarr/configs:/app/configs
+      - /opt/appdata/tdarr/logs:/app/logs
+      - /srv/media:/media
+      - /tmp/transcode_cache:/temp
+    networks:
+      - media
+      - homepage
+
+
+
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+    volumes:
+      - /opt/appdata/bazarr/config:/config
+      - /srv/media:/data 
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+    networks:
+      - media
+      - homepage
 
 networks:
   media:
     name: media
+  homepage:
+    name: homepage

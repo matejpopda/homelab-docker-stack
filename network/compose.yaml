@@ -1,0 +1,23 @@
+services:
+  samba:
+    image: ghcr.io/servercontainers/samba:smbd-only-latest
+    container_name: samba
+    restart: unless-stopped
+    ports:
+      - "192.168.10.5:445:445/tcp"
+    environment:
+      ACCOUNT_media: "${SAMBA_MEDIA_PASSWORD}"
+      ACCOUNT_files: "${SAMBA_FILES_PASSWORD}"
+      ACCOUNT_backups: "${SAMBA_BACKUPS_PASSWORD}"
+      UID_files: "1001"
+      UID_backups: "1002"
+      SAMBA_CONF_WORKGROUP: "WORKGROUP"
+      SAMBA_CONF_SERVER_STRING: "Homelab Samba"
+      SAMBA_CONF_MAP_TO_GUEST: "Bad User"
+      SAMBA_VOLUME_CONFIG_media: "[Media]; path=/shares/media; valid users = media; guest ok = no; read only = no; browseable = yes; force user = root"
+      # SAMBA_VOLUME_CONFIG_files: "[Files]; path=/shares/files; valid users = files; guest ok = no; read only = no; browseable = yes; force user = files"
+      # SAMBA_VOLUME_CONFIG_backups: "[Backups]; path=/shares/backups; valid users = backups; guest ok = no; read only = no; browseable = yes; force user = backups"
+    volumes:
+      - /srv/media:/shares/media
+      # - /srv/shares/files:/shares/files
+      # - /srv/shares/backups:/shares/backups
